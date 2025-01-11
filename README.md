@@ -11,7 +11,7 @@ cd pinpoint-docker
 
 2. docker-compopse 로 컨테이너들 실행
 ```
-docker-compose up 
+docker-compose up -d
 ```
 - 잘 실행되는지 로그 보기
 ```
